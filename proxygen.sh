@@ -14,11 +14,11 @@ echo -e "INFO : grab from -> free-proxy-list.net/anonymous-proxy.html"
 curl --silent "https://free-proxy-list.net/anonymous-proxy.html" | grep -Eo '<td>([0-9]{1,3}\.){3}[0-9]{1,3}<(.?*)>[0-9]{2,9}</td>' | sed 's/<td>//g' | sed 's/<\/td>/:/g' | grep -Eo '([0-9]{1,3}\.){3}[0-9]{1,3}:[0-9]{2,9}' >> PROXY.txt
 echo -e "INFO : grab from -> www.proxy-list.download"
 curl --silent "https://www.proxy-list.download/api/v1/get?type=http&country=US" >> PROXY.txt
-echo -e "INFO : grab from squidproxyserver.com"
+echo -e "INFO : grab from -> squidproxyserver.com"
 curl --silent "https://squidproxyserver.com/" | grep -Eo '<td>([0-9]{1,3}\.){3}[0-9]{1,3}<(.?*)>[0-9]{2,9}</td>' | sed 's/<td>//g' | sed 's/<\/td>/:/g' | grep -Eo '([0-9]{1,3}\.){3}[0-9]{1,3}:[0-9]{2,9}' >> PROXY.txt
-echo -e "INFO : grab from hidemyassproxylist.org"
+echo -e "INFO : grab from -> hidemyassproxylist.org"
 curl --silent "http://www.hidemyassproxylist.org/" | sed 's/<\/td><\/tr><tr><td>/\\\n/g' | grep -Eo '<td>([0-9]{1,3}\.){3}[0-9]{1,3}<(.?*)>[0-9]{2,9}</td>' | sed 's/<td>//g' | sed 's/<\/td>/:/g' | grep -Eo '([0-9]{1,3}\.){3}[0-9]{1,3}:[0-9]{2,9}' >> PROXY.txt
-echo -e "INFO : grab from us-proxy.org"
+echo -e "INFO : grab from -> us-proxy.org"
 curl --silent "https://www.us-proxy.org/" | grep -Po '<td>(.*)</td>' | sed 's/<td>//g' | sed 's/<\/td>/:/g' | grep -Eo '([0-9]{1,3}\.){3}[0-9]{1,3}:[0-9]{5,9}' >> PROXY.txt
 echo -e "$hijau[+] TOTAL -> " $(wc -l PROXY.txt)
 }
